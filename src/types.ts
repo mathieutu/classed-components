@@ -1,5 +1,5 @@
 import { ComponentType, FC } from 'react'
-import { Classes, TemplateStringsPlaceHolders } from './classNames'
+import { Classes, ClassesValueArray } from './classNames'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
@@ -23,7 +23,7 @@ export type Tag = ReactComponent | HTMLBasicElement
 
 type CreateClassedComponentFrom<Props> = <ExtraProps>(
   classes: Classes<ExtraProps & Props>,
-  ...placeholders: TemplateStringsPlaceHolders<ExtraProps & Props>
+  ...placeholders: ClassesValueArray<ExtraProps & Props>
 ) => FCWithClassNameOptional<ExtraProps & Props>
 
 type CreateClassedComponentFromHtmlBasicElement<Tag extends HTMLBasicElement,

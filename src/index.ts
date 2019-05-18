@@ -1,13 +1,13 @@
 import * as classNames from 'classnames'
 import { createElement } from 'react'
-import { Classes, processClasses, TemplateStringsPlaceHolders } from './classNames'
+import { Classes, ClassesValueArray, processClasses } from './classNames'
 import { tags } from './tags'
 import { CreateClassedComponent, Tag } from './types'
 
 const tagDisplayName = (tag: Tag) => typeof tag === 'string' ? tag : tag.displayName || tag.name
 
 const createClassed: any = (tag: Tag) => {
-  return (classes: Classes<any>, ...placeholders: TemplateStringsPlaceHolders<any>) => {
+  return (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
     const Hoc = (props: any) => {
 
       const className = classNames(

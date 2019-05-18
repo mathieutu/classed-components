@@ -1,32 +1,38 @@
-type BasicClassValue = string | { [id: string]: any }
-type ClassesValue<P> = BasicClassValue | ClassesArray<P> | ((props: P) => Classes<P>)
-export type Classes<P> = ClassesValue<P> | ClassesArray<P> | TemplateStringsArray
+import * as classNames from 'classnames'
 
-interface ClassesArray<P> extends Array<ClassesValue<P>> {
+type BasicClassValue = string | { [id: string]: any } | undefined | boolean
+type ClassesValue<P> = BasicClassValue | ClassesValueArray<P> | ((props: P) => Classes<P>)
+export type Classes<P> = ClassesValue<P> | ClassesValueArray<P> | TemplateStringsArray
+
+export interface ClassesValueArray<P> extends Array<ClassesValue<P>> {
 }
 
-export type TemplateStringsPlaceHolders<P> = (string | ((props: P) => string))[]
-
-const isTemplateString = (classes: Classes<any>): classes is TemplateStringsArray => classes.hasOwnProperty('raw')
+const isTemplateString = (classes: Classes<any>): classes is TemplateStringsArray => {
+  return Array.isArray(classes) && classes.hasOwnProperty('raw')
+}
 
 export const processClasses = <P>(
   classes: Classes<P>,
-  props: P, templateStringPlaceholders: TemplateStringsPlaceHolders<P> = [],
+  props: P, templateStringPlaceholders: ClassesValueArray<P> = [],
 ): BasicClassValue => {
   if (isTemplateString(classes)) {
     return processAsTemplateString(classes, props, templateStringPlaceholders)
+  }
+
+  if (typeof classes === 'function') {
+    return processClasses(classes(props), props)
   }
 
   if (Array.isArray(classes)) {
     return classes.map(classesValue => processClasses(classesValue, props))
   }
 
-  return processClassesValue(classes, props)
+  return classes
 }
 
-const preparePlaceholders = <P>(templateStringPlaceholders: TemplateStringsPlaceHolders<P>, props: P) => {
+const preparePlaceholders = <P>(templateStringPlaceholders: ClassesValueArray<P>, props: P) => {
   return templateStringPlaceholders.map(placeholder => {
-    return typeof placeholder === 'string' ? placeholder : placeholder(props)
+    return classNames(processClasses(placeholder, props))
   })
 }
 
@@ -35,23 +41,15 @@ const compileClassnames = (placeholders: string[], classes: TemplateStringsArray
 
   placeholders.forEach((placeholder, i) => className += classes[i] + placeholder)
 
-  return className + classes[classes.length - 1]
+  return (className + classes[classes.length - 1]).replace(/\s+/g, ' ').trim()
 }
 
 const processAsTemplateString = <P>(
   classes: TemplateStringsArray,
   props: P,
-  templateStringPlaceholders: TemplateStringsPlaceHolders<P>,
+  templateStringPlaceholders: ClassesValueArray<P>,
 ): string => {
   const placeholders = preparePlaceholders(templateStringPlaceholders, props)
 
   return compileClassnames(placeholders, classes)
-}
-
-const processClassesValue = <P>(classesValue: ClassesValue<P>, props: P): BasicClassValue => {
-  if (typeof classesValue === 'function') {
-    return classesValue(props)
-  }
-
-  return classesValue
 }
