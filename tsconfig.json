@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "noResolve": false,
+    "module": "commonjs",
+    "target": "es2015",
+    "lib": ["es2017"],
+    "experimentalDecorators": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "jsx": "preserve"
+  },
+  "files": ["./src/index.ts"]
+}

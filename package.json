@@ -1,0 +1,55 @@
+{
+  "name": "classed-components",
+  "version": "0.0.1",
+  "description": "CSS Classes for the component age. Apply your Css with the power of Javascript.",
+  "keywords": [
+    "classNames",
+    "react",
+    "components",
+    "classed",
+    "class",
+    "styled"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/mathieutu/classed-components.git",
+  "author": "Mathieu TUDISCO <oss@mathieutu.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mathieutu/classed-components/issues"
+  },
+  "homepage": "https://github.com/mathieutu/classed-components",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "watch": "npm run build -- -w",
+    "lint": "tslint -p tsconfig.json --fix",
+    "test": "tsc --noEmit",
+    "prepublishOnly": "npm test --scripts-prepend-node-path && npm run lint --scripts-prepend-node-path",
+    "changelog": "gitmoji-changelog"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/jest": "^24.0.13",
+    "@types/react": "^16.8.17",
+    "gitmoji-changelog": "^1.1.0",
+    "jest": "^24.8.0",
+    "react-test-renderer": "^16.8.6",
+    "tslint": "^5.16.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}
