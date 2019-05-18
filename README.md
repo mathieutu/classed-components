@@ -1,8 +1,13 @@
 # classed-components <!-- omit in toc -->
 
-[![npm](https://img.shields.io/npm/v/classed-components.svg)](https://www.npmjs.com/package/classed-components) [![npm](https://img.shields.io/npm/dt/classed-components.svg)](https://www.npmjs.com/package/classed-components)
+[![npm](https://img.shields.io/npm/v/classed-components.svg)](https://www.npmjs.com/package/classed-components) 
+[![npm](https://img.shields.io/npm/dt/classed-components.svg)](https://www.npmjs.com/package/classed-components) 
+[![Coverage Status](https://coveralls.io/repos/github/mathieutu/classed-components/badge.svg?branch=master)](https://coveralls.io/github/mathieutu/classed-components?branch=master) 
+[![Build Status](https://travis-ci.org/mathieutu/classed-components.svg?branch=master)](https://travis-ci.org/mathieutu/classed-components)
+
 
 **💅 CSS Classes for the component age.**
+
 
 This package allows you to add a your css classes to your component with the power of Javascript, and with Css-in-JS style.
 
