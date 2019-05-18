@@ -15,7 +15,7 @@
     "strictPropertyInitialization": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "jsx": "preserve"
+    "jsx": "react"
   },
   "files": ["./src/index.ts"]
 }
