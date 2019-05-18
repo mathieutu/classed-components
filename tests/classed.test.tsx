@@ -45,7 +45,7 @@ describe('Basic tests', () => {
   })
 })
 
-describe('Test classes root argument', () => {
+describe('Test classes root argument syntaxes', () => {
   test('it allows passing classes as an array of string', () => {
     const Nav = classed.nav(['all', 'these', 'classes'])
 
