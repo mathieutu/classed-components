@@ -44,11 +44,9 @@ And all of that with:
 
 ## Installation
 
-**WIP: NOT RELEASED YET**
-
-<!-- ```bash -->
-<!-- yarn add classed-components -->
-<!-- ``` -->
+```bash
+yarn add classed-components
+```
 
 ## Usage
 
