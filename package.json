@@ -24,13 +24,14 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "watch": "npm run build -- -w",
+    "watch": "yarn build -- -w",
     "lint": "tslint -p tsconfig.json",
     "pretty": "lint --fix",
     "test": "yarn lint & tsc --noEmit && jest",
     "coverage": "yarn test --coverage --coverageReporters=text-lcov | coveralls",
     "test-watch": "jest --watch",
-    "prepublishOnly": "npm test --scripts-prepend-node-path && npm run lint --scripts-prepend-node-path",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
     "changelog": "gitmoji-changelog"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "coveralls": "^3.0.3",
     "gitmoji-changelog": "^1.1.0",
     "jest": "^24.8.0",
+    "react": "^16.8.6",
     "react-test-renderer": "^16.8.6",
     "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",
@@ -48,13 +50,11 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "react": "^16.8.6"
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "react": "*"
   },
-  "optionalDependencies": {},
   "engines": {
     "node": ">=6.0.0"
   }

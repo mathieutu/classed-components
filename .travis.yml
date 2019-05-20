@@ -1,11 +1,16 @@
 language: node_js
 node_js:
-  - node
-
-cache: 
-  - npm
-  - yarn
-
-script: 
-  - yarn coverage
-
+- node
+cache:
+- npm
+- yarn
+script:
+- yarn coverage
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: oss@mathieutu.dev
+  api_key: $NPM_API_KEY
+  on:
+    tags: true
+    repo: mathieutu/classed-components
