@@ -37,9 +37,7 @@ const preparePlaceholders = <P>(templateStringPlaceholders: ClassesValueArray<P>
 }
 
 const compileClassnames = (placeholders: string[], classes: TemplateStringsArray) => {
-  let className: string = ''
-
-  placeholders.forEach((placeholder, i) => className += classes[i] + placeholder)
+  const className = placeholders.reduce((acc, placeholder, i) => acc + classes[i] + placeholder, '')
 
   return (className + classes[classes.length - 1]).replace(/\s+/g, ' ').trim()
 }
