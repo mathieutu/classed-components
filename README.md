@@ -309,3 +309,9 @@ This package is an open-sourced software licensed under the [MIT license](http:/
 ## Contributing
 
 Issues and PRs are obviously welcomed and encouraged, for new features as well as documentation.
+
+## Thanks
+
+Many thanks to actual and future [contributors](https://github.com/mathieutu/classed-components/graphs/contributors), 
+to [@emotion-js](https://github.com/emotion-js/emotion) for their great work about styling components,
+and particular thanks to [@mephju](https://github.com/mephju) for letting this package having the already reserved `classed-component` name on npm.  
