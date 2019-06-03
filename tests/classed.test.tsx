@@ -239,14 +239,12 @@ describe('Test using props in functions', () => {
 
     assertEquals(
       <Link href="#" external={false}>foo</Link>,
-      // @ts-ignore
-      <a className="always this one" href="#" external={false}>foo</a>,
+      <a className="always this one" href="#">foo</a>,
     )
 
     assertEquals(
       <Link href="https://mathieutu.dev" external={true}>foo</Link>,
-      // @ts-ignore
-      <a className="always this one only on external" href="https://mathieutu.dev" external={true}>foo</a>,
+      <a className="always this one only on external" href="https://mathieutu.dev">foo</a>,
     )
   })
 })

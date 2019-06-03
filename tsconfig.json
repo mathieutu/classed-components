@@ -4,7 +4,7 @@
     "noResolve": false,
     "module": "commonjs",
     "target": "es2015",
-    "lib": ["es2017"],
+    "lib": ["esnext"],
     "experimentalDecorators": true,
     "strict": true,
     "noImplicitAny": true,

@@ -1,6 +1,8 @@
-import { ClassedTags } from './types'
+import isPropValid from '@emotion/is-prop-valid'
+import { ElementType } from 'react'
+import { HTMLBasicElement } from './types'
 
-export const tags: (keyof ClassedTags)[] = [
+export const tags: HTMLBasicElement[] = [
   'a',
   'abbr',
   'address',
@@ -137,3 +139,20 @@ export const tags: (keyof ClassedTags)[] = [
   'text',
   'tspan',
 ]
+
+const isAnHtmlBasicElement = (tag: ElementType): tag is HTMLBasicElement =>
+  typeof tag === 'string' && tags.includes(tag)
+
+const forwardAll = Symbol('Forward all props')
+
+const getShouldForwardProp = (tag: ElementType) => isAnHtmlBasicElement(tag) ? isPropValid : forwardAll
+
+export const filterPropsToForward = (tag: ElementType, props: object) => {
+  const shouldForwardProp = getShouldForwardProp(tag)
+
+  if (shouldForwardProp === forwardAll) {
+    return { ...props }
+  }
+
+  return Object.fromEntries(Object.entries(props).filter(([key]) => shouldForwardProp(key)))
+}

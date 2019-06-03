@@ -1,21 +1,23 @@
 import * as classNames from 'classnames'
 import { createElement } from 'react'
 import { Classes, ClassesValueArray, processClasses } from './classNames'
-import { tags } from './tags'
+import { filterPropsToForward, tags } from './tags'
 import { CreateClassedComponent, Tag } from './types'
 
 const tagDisplayName = (tag: Tag) => typeof tag === 'string' ? tag : tag.displayName || tag.name
 
 const createClassed: any = (tag: Tag) => {
   return (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
-    const Hoc = (props: any) => {
+    const Hoc = (props: { className?: string }) => {
 
       const className = classNames(
         processClasses(classes, props, placeholders),
         props.className,
       )
 
-      return createElement(tag, { ...props, className })
+      const propsToForward = filterPropsToForward(tag, props)
+
+      return createElement(tag, { ...propsToForward, className })
     }
 
     Hoc.displayName = `Classed(${tagDisplayName(tag)})`

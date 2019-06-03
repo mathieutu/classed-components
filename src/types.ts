@@ -1,4 +1,4 @@
-import { ComponentType, FC } from 'react'
+import { ComponentType, ElementType, FC } from 'react'
 import { Classes, ClassesValueArray } from './classNames'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
@@ -17,9 +17,9 @@ type PropsOf<
 
 type FCWithClassNameOptional<P extends { className?: string }> = FC<PartialBy<P, 'className'>>
 type ReactComponent = ComponentType<any>
-type HTMLBasicElement = keyof JSX.IntrinsicElements
+export type HTMLBasicElement = keyof JSX.IntrinsicElements
 
-export type Tag = ReactComponent | HTMLBasicElement
+export type Tag = ElementType
 
 type CreateClassedComponentFrom<Props> = <ExtraProps>(
   classes: Classes<ExtraProps & Props>,
