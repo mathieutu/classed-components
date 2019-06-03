@@ -1,6 +1,6 @@
 {
   "name": "classed-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CSS Classes for the component age. Apply your Css with the power of Javascript.",
   "keywords": [
     "classNames",

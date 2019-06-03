@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="1.0.1"></a>
+## 1.0.1 (2019-06-03)
+
+### Fixed
+
+- 🐛 Filter props to forward to intrinsic elements, and avoid React warnings. (fix [#2](https://github.com/mathieutu/classed-components/issues/2)) [[4098c7b](https://github.com/mathieutu/classed-components/commit/4098c7be43cca1c64992b23ac41d48f83007892d)]
+
+### Miscellaneous
+
+- 📝 Add thanks section to readme. [[63bc9ba](https://github.com/mathieutu/classed-components/commit/63bc9ba2fbb6e98fe44682dcbcb0d134d5a76b76)]
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2019-05-21)
 
