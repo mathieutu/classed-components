@@ -5,7 +5,8 @@ cache:
 - npm
 - yarn
 script:
-- yarn coverage
+  - yarn run check
+  - yarn run coverage
 deploy:
   skip_cleanup: true
   provider: npm

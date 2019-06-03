@@ -24,14 +24,15 @@
   ],
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "watch": "yarn build -- -w",
+    "watch": "yarn run build -- -w",
     "lint": "tslint -p tsconfig.json",
-    "pretty": "lint --fix",
-    "test": "yarn lint & tsc --noEmit && jest",
-    "coverage": "yarn test --coverage --coverageReporters=text-lcov | coveralls",
+    "pretty": "yarn run lint --fix",
+    "check": "tsc --noEmit && yarn run lint",
+    "test": "jest",
+    "coverage": "yarn run test --coverage --coverageReporters=text-lcov | coveralls",
     "test-watch": "jest --watch",
-    "prepare": "yarn build",
-    "prepublishOnly": "yarn test && yarn lint",
+    "prepare": "yarn run build",
+    "prepublishOnly": "yarn run check && yarn run test",
     "changelog": "gitmoji-changelog"
   },
   "devDependencies": {
