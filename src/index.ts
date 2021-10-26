@@ -1,5 +1,5 @@
 import * as classNames from 'classnames'
-import { createElement } from 'react'
+import { createElement, forwardRef } from 'react'
 import { Classes, ClassesValueArray, processClasses } from './classNames'
 import { filterPropsToForward, tags } from './tags'
 import { CreateClassedComponent, Tag } from './types'
@@ -8,7 +8,7 @@ const tagDisplayName = (tag: Tag) => typeof tag === 'string' ? tag : tag.display
 
 const createClassed: any = (tag: Tag) => {
   return (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
-    const Hoc = (props: { className?: string }) => {
+    const Hoc = forwardRef((props: { className?: string }, ref) => {
 
       const className = classNames(
         processClasses(classes, props, placeholders),
@@ -17,8 +17,8 @@ const createClassed: any = (tag: Tag) => {
 
       const propsToForward = filterPropsToForward(tag, props)
 
-      return createElement(tag, { ...propsToForward, className })
-    }
+      return createElement(tag, { ...propsToForward, ref, className })
+    })
 
     Hoc.displayName = `Classed(${tagDisplayName(tag)})`
 
