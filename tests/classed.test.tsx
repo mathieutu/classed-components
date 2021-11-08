@@ -2,21 +2,21 @@ import * as React from 'react'
 import { create } from 'react-test-renderer'
 import { classed } from '../src'
 
-const assertEquals = (expected: React.ReactElement, actual: React.ReactElement) => {
-  return expect(create(expected).toJSON()).toEqual(create(actual).toJSON())
-}
+const assertEquals = (expected: React.ReactElement, actual: React.ReactElement) => (
+  expect(create(expected).toJSON()).toEqual(create(actual).toJSON())
+)
 
 describe('Basic tests', () => {
   test('it allows passing basic html tag', () => {
     const Nav = classed('nav')('')
 
-    assertEquals(<Nav/>, <nav className=""/>)
+    assertEquals(<Nav />, <nav className="" />)
   })
 
   test('it has handy shortcuts for basic html tag', () => {
     const Nav = classed.nav('')
 
-    assertEquals(<Nav/>, <nav className=""/>)
+    assertEquals(<Nav />, <nav className="" />)
   })
 
   test('it forwards the original props and children', () => {
@@ -26,7 +26,7 @@ describe('Basic tests', () => {
   })
 
   test('it allows passing custom components', () => {
-    const ExternalLink = (props: any) => <a target="_blank" rel="noopener noreferer" {...props}/>
+    const ExternalLink = (props: any) => <a target="_blank" rel="noopener noreferer" {...props} />
 
     const MenuLink = classed(ExternalLink)('')
 
@@ -38,18 +38,21 @@ describe('Basic tests', () => {
 
   test('it forwards refs to the created elements', () => {
     const ref = jest.fn()
-    const MenuLink = classed.a('')
+    const MenuLink = classed.a('my-class')
 
     create(
       <MenuLink href="#" ref={ref}>foo</MenuLink>,
-        {
-        createNodeMock: (element) => {
-          return {type: element.type};
-        }
-      }
+      { createNodeMock: element => element } // https://reactjs.org/docs/test-renderer.html#ideas
     )
 
-    expect(ref.mock.calls[0]).toEqual([{ type: 'a' }])
+    expect(ref.mock.calls[0]).toEqual([{
+      props: {
+        href: '#',
+        className: 'my-class',
+        children: 'foo',
+      },
+      type: 'a'
+    }])
   })
 
   test('in fact it just fills the className props of the provided components', () => {
@@ -203,7 +206,7 @@ describe('Test using props in functions', () => {
   })
 
   test('it passes custom component props in root class function', () => {
-    const Link = ({ blank, ...props }: any) => <a {...(blank && { target: '_blank' })} {...props}/>
+    const Link = ({ blank, ...props }: any) => <a {...(blank && { target: '_blank' })} {...props} />
 
     const ClassedLink = classed(Link)(({ blank }) => [
       'always this one',
