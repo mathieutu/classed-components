@@ -17,9 +17,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run checks
-        run: yarn check
+        run: yarn run check
       - name: Run tests
-        run: yarn test:coverage
+        run: yarn run test:coverage
       - name: Report coverage
         uses: coverallsapp/github-action@master
         with:

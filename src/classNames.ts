@@ -1,4 +1,4 @@
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 
 type BasicClassValue = string | { [id: string]: any } | undefined | boolean
 type ClassesValue<P> = BasicClassValue | ClassesValueArray<P> | ((props: P) => Classes<P>)

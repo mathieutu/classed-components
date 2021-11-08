@@ -1,4 +1,4 @@
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import { createElement, forwardRef } from 'react'
 import { Classes, ClassesValueArray, processClasses } from './classNames'
 import { filterPropsToForward, tags } from './tags'

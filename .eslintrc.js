@@ -17,5 +17,6 @@ module.exports = {
     'max-len': ['warn', 120],
     'object-curly-newline': 'off',
     'import/prefer-default-export': 'off',
+    "import/no-extraneous-dependencies": "off",
   },
 }
