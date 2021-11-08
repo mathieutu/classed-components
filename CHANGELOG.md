@@ -1,5 +1,19 @@
 # Changelog
 
+<a name="2.0.0"></a>
+## 2.0.0 (2021-11-08)
+
+### Added
+
+- ✨ Add refs forwarding to HOC. ([#5](https://github.com/mathieutu/classed-components/issues/5)) [[4f85a3b](https://github.com/mathieutu/classed-components/commit/4f85a3be12eab10124d3c7f6a25bc734eeff5a36)]
+
+### Miscellaneous
+
+- ⬆️ Upgrade dependencies. ([#6](https://github.com/mathieutu/classed-components/issues/6)) [[325bc59](https://github.com/mathieutu/classed-components/commit/325bc59c5800ce075039ad69b8669f0fb47904c6)]
+-  👷 Replace Travis by Github actions. [[ec0987e](https://github.com/mathieutu/classed-components/commit/ec0987eb3b3739c56bbd543c4d279f0b78a74f53)]
+- 🔨 Replace TSLint by ESLint. [[8d39630](https://github.com/mathieutu/classed-components/commit/8d396303d87503c1be0fcdbe26368561a8aaf6ec)]
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2019-06-03)
 
