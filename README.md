@@ -1,8 +1,8 @@
 # classed-components <!-- omit in toc -->
 
-[![npm](https://img.shields.io/npm/v/classed-components.svg)](https://www.npmjs.com/package/classed-components) 
-[![npm](https://img.shields.io/npm/dt/classed-components.svg)](https://www.npmjs.com/package/classed-components) 
-[![Coverage Status](https://coveralls.io/repos/github/mathieutu/classed-components/badge.svg?branch=master)](https://coveralls.io/github/mathieutu/classed-components?branch=master) 
+[![npm](https://img.shields.io/npm/v/classed-components.svg)](https://www.npmjs.com/package/classed-components)
+[![npm](https://img.shields.io/npm/dt/classed-components.svg)](https://www.npmjs.com/package/classed-components)
+[![Coverage Status](https://coveralls.io/repos/github/mathieutu/classed-components/badge.svg?branch=master)](https://coveralls.io/github/mathieutu/classed-components?branch=master)
 [![Build Status](https://travis-ci.org/mathieutu/classed-components.svg?branch=master)](https://travis-ci.org/mathieutu/classed-components)
 
 
@@ -11,7 +11,7 @@
 
 This package allows you to add a your css classes to your component with the power of Javascript, and with Css-in-JS style.
 
-![screenshot](./screenshot.png)
+![screenshot](./.github/assets/screenshot.png)
 
 **✨ Features:**
 
@@ -39,6 +39,7 @@ And all of that with:
 - [A bug, a question?](#a-bug-a-question)
 - [License](#license)
 - [Contributing](#contributing)
+- [Thanks](#thanks)
   
 ------
 
@@ -240,10 +241,10 @@ const Nav = classed.nav<{ isShown: boolean }>([
 ```
 That way, the original props and the ones you add will be merged, and you will have a high quality auto-completion:
 
-![Typescript: Autocompletion in function](docs/ts_function.png)
-![Typescript: Autocompletion in JSX](docs/ts_jsx.png)
-![Typescript: Adding props: Autocompletion in function](docs/ts_add_props_function.png)
-![Typescript: Adding props: Autocompletion in JSX](docs/ts_add_props_jsx.png)
+![Typescript: Autocompletion in function](.github/assets/ts_function.png)
+![Typescript: Autocompletion in JSX](.github/assets/ts_jsx.png)
+![Typescript: Adding props: Autocompletion in function](.github/assets/ts_add_props_function.png)
+![Typescript: Adding props: Autocompletion in JSX](.github/assets/ts_add_props_jsx.png)
 
 
 ## Examples
@@ -312,6 +313,6 @@ Issues and PRs are obviously welcomed and encouraged, for new features as well a
 
 ## Thanks
 
-Many thanks to actual and future [contributors](https://github.com/mathieutu/classed-components/graphs/contributors), 
+Many thanks to actual and future [contributors](https://github.com/mathieutu/classed-components/graphs/contributors),
 to [@emotion-js](https://github.com/emotion-js/emotion) for their great work about styling components,
-and particular thanks to [@mephju](https://github.com/mephju) for letting this package having the already reserved `classed-component` name on npm.  
+and particular thanks to [@mephju](https://github.com/mephju) for letting this package having the already reserved `classed-component` name on npm.
