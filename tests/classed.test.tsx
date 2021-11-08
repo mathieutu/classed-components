@@ -36,6 +36,22 @@ describe('Basic tests', () => {
     )
   })
 
+  test('it forwards refs to the created elements', () => {
+    const ref = jest.fn()
+    const MenuLink = classed.a('')
+
+    create(
+      <MenuLink href="#" ref={ref}>foo</MenuLink>,
+        {
+        createNodeMock: (element) => {
+          return {type: element.type};
+        }
+      }
+    )
+
+    expect(ref.mock.calls[0]).toEqual([{ type: 'a' }])
+  })
+
   test('in fact it just fills the className props of the provided components', () => {
     const UnClassableLink = ({ className, ...props }: any) => <a {...props}>{className}</a>
 
