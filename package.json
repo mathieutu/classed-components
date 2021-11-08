@@ -29,7 +29,7 @@
     "lint:fix": "yarn lint --fix",
     "check": "tsc --noEmit && yarn run lint",
     "test": "jest",
-    "coverage": "yarn run test --coverage --coverageReporters=text-lcov | coveralls",
+    "test:coverage": "yarn run test --coverage",
     "test-watch": "jest --watch",
     "prepare": "yarn run build",
     "prepublishOnly": "yarn run check && yarn run test",

@@ -2,8 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/classed-components.svg)](https://www.npmjs.com/package/classed-components)
 [![npm](https://img.shields.io/npm/dt/classed-components.svg)](https://www.npmjs.com/package/classed-components)
-[![Coverage Status](https://coveralls.io/repos/github/mathieutu/classed-components/badge.svg?branch=master)](https://coveralls.io/github/mathieutu/classed-components?branch=master)
-[![Build Status](https://travis-ci.org/mathieutu/classed-components.svg?branch=master)](https://travis-ci.org/mathieutu/classed-components)
+[![Coverage Status](https://coveralls.io/repos/github/mathieutu/classed-components/badge.svg?branch=main)](https://coveralls.io/github/mathieutu/classed-components?branch=main)
+[![Build Status](https://github.com/mathieutu/classed-components/actions/workflows/test.yml/badge.svg)](https://github.com/mathieutu/classed-components/actions/workflows/test.yml)
 
 
 **💅 CSS Classes for the component age.**
@@ -26,6 +26,7 @@ And all of that with:
  - Top developer experience: deep Typescript typing.
 
 ## Table of contents <!-- omit in toc -->
+- [- Thanks](#--thanks)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Object syntax](#object-syntax)
@@ -40,7 +41,6 @@ And all of that with:
 - [License](#license)
 - [Contributing](#contributing)
 - [Thanks](#thanks)
-  
 ------
 
 ## Installation
@@ -231,7 +231,7 @@ classed-components is highly typed.
 
 When using with Typescript, you will have all the available props of your original component in functions, and in the generated classed component.
 
-If you want to add some props to manage your styling, you can type them by setting the first generic of the function. 
+If you want to add some props to manage your styling, you can type them by setting the first generic of the function.
 
 ```tsx
 const Nav = classed.nav<{ isShown: boolean }>([
