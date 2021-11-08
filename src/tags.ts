@@ -140,12 +140,13 @@ export const tags: HTMLBasicElement[] = [
   'tspan',
 ]
 
-const isAnHtmlBasicElement = (tag: ElementType): tag is HTMLBasicElement =>
+const isAnHtmlBasicElement = (tag: ElementType): tag is HTMLBasicElement => (
   typeof tag === 'string' && tags.includes(tag)
+)
 
 const forwardAll = Symbol('Forward all props')
 
-const getShouldForwardProp = (tag: ElementType) => isAnHtmlBasicElement(tag) ? isPropValid : forwardAll
+const getShouldForwardProp = (tag: ElementType) => (isAnHtmlBasicElement(tag) ? isPropValid : forwardAll)
 
 export const filterPropsToForward = (tag: ElementType, props: object) => {
   const shouldForwardProp = getShouldForwardProp(tag)

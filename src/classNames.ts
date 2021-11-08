@@ -7,15 +7,16 @@ export type Classes<P> = ClassesValue<P> | ClassesValueArray<P> | TemplateString
 export interface ClassesValueArray<P> extends Array<ClassesValue<P>> {
 }
 
-const isTemplateString = (classes: Classes<any>): classes is TemplateStringsArray => {
-  return Array.isArray(classes) && classes.hasOwnProperty('raw')
-}
+const isTemplateString = (classes: Classes<any>): classes is TemplateStringsArray => (
+  Array.isArray(classes) && Object.prototype.hasOwnProperty.call(classes, 'raw')
+)
 
 export const processClasses = <P>(
   classes: Classes<P>,
   props: P, templateStringPlaceholders: ClassesValueArray<P> = [],
 ): BasicClassValue => {
   if (isTemplateString(classes)) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     return processAsTemplateString(classes, props, templateStringPlaceholders)
   }
 
@@ -24,17 +25,15 @@ export const processClasses = <P>(
   }
 
   if (Array.isArray(classes)) {
-    return classes.map(classesValue => processClasses(classesValue, props))
+    return classes.map((classesValue) => processClasses(classesValue, props))
   }
 
   return classes
 }
 
-const preparePlaceholders = <P>(templateStringPlaceholders: ClassesValueArray<P>, props: P) => {
-  return templateStringPlaceholders.map(placeholder => {
-    return classNames(processClasses(placeholder, props))
-  })
-}
+const preparePlaceholders = <P>(templateStringPlaceholders: ClassesValueArray<P>, props: P) => (
+  templateStringPlaceholders.map((placeholder) => classNames(processClasses(placeholder, props)))
+)
 
 const compileClassnames = (placeholders: string[], classes: TemplateStringsArray) => {
   const className = placeholders.reduce((acc, placeholder, i) => acc + classes[i] + placeholder, '')

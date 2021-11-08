@@ -4,29 +4,26 @@ import { Classes, ClassesValueArray, processClasses } from './classNames'
 import { filterPropsToForward, tags } from './tags'
 import { CreateClassedComponent, Tag } from './types'
 
-const tagDisplayName = (tag: Tag) => typeof tag === 'string' ? tag : tag.displayName || tag.name
+const tagDisplayName = (tag: Tag) => (typeof tag === 'string' ? tag : tag.displayName || tag.name)
 
-const createClassed: any = (tag: Tag) => {
-  return (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
-    const Hoc = forwardRef((props: { className?: string }, ref) => {
+const createClassed: any = (tag: Tag) => (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
+  const Hoc = forwardRef((props: { className?: string }, ref) => {
+    const className = classNames(
+      processClasses(classes, props, placeholders),
+      props.className,
+    )
 
-      const className = classNames(
-        processClasses(classes, props, placeholders),
-        props.className,
-      )
+    const propsToForward = filterPropsToForward(tag, props)
 
-      const propsToForward = filterPropsToForward(tag, props)
+    return createElement(tag, { ...propsToForward, ref, className })
+  })
 
-      return createElement(tag, { ...propsToForward, ref, className })
-    })
+  Hoc.displayName = `Classed(${tagDisplayName(tag)})`
 
-    Hoc.displayName = `Classed(${tagDisplayName(tag)})`
-
-    return Hoc
-  }
+  return Hoc
 }
 
-tags.forEach(tagName => {
+tags.forEach((tagName) => {
   createClassed[tagName] = createClassed(tagName)
 })
 

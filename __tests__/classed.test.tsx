@@ -42,7 +42,7 @@ describe('Basic tests', () => {
 
     create(
       <MenuLink href="#" ref={ref}>foo</MenuLink>,
-      { createNodeMock: element => element } // https://reactjs.org/docs/test-renderer.html#ideas
+      { createNodeMock: (element) => element }, // https://reactjs.org/docs/test-renderer.html#ideas
     )
 
     expect(ref.mock.calls[0]).toEqual([{
@@ -51,7 +51,7 @@ describe('Basic tests', () => {
         className: 'my-class',
         children: 'foo',
       },
-      type: 'a'
+      type: 'a',
     }])
   })
 
@@ -219,7 +219,6 @@ describe('Test using props in functions', () => {
       <ClassedLink href="https://mathieutu.dev" blank>foo</ClassedLink>,
       <a className="always this one only on blank" href="https://mathieutu.dev" target="_blank">foo</a>,
     )
-
   })
 
   test('it passes component props in any nested function', () => {

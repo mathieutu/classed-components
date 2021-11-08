@@ -25,7 +25,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "watch": "yarn run build -- -w",
-    "lint": "eslint --ignore-path .gitignore --ext .ts --ext .jsx .",
+    "lint": "eslint --ignore-path .gitignore --ext .ts --ext .tsx .",
     "lint:fix": "yarn lint --fix",
     "check": "tsc --noEmit && yarn run lint",
     "test": "jest",

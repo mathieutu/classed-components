@@ -6,20 +6,18 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
 type PropsOf<
-  Tag extends React.ComponentType<any>
+  Tag extends React.ComponentType<any>,
   > = Tag extends React.FC<infer Props>
-  ? Props & React.Attributes
-  : Tag extends React.ComponentClass<infer Props>
-    ? (Tag extends new (...args: any[]) => infer Instance
-      ? Props & React.ClassAttributes<Instance>
-      : never)
-    : never
+    ? Props & React.Attributes
+    : Tag extends React.ComponentClass<infer Props>
+      ? (Tag extends new (...args: any[]) => infer Instance
+        ? Props & React.ClassAttributes<Instance>
+        : never)
+      : never
 
 type FCWithClassNameOptional<P extends { className?: string }> = FC<PartialBy<P, 'className'>>
 type ReactComponent = ComponentType<any>
 export type HTMLBasicElement = keyof JSX.IntrinsicElements
-
-export type Tag = ElementType
 
 type CreateClassedComponentFrom<Props> = <ExtraProps>(
   classes: Classes<ExtraProps & Props>,
@@ -175,3 +173,5 @@ export type ClassedTags = {
 }
 
 export type CreateClassedComponent = BaseCreateClassed & ClassedTags
+
+export type Tag = ElementType
