@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="2.0.1"></a>
+## 2.0.1 (2024-02-14)
+
+### Changed
+
+- ♻️ Replace classnames with clsx ([#8](https://github.com/mathieutu/classed-components/issues/8)) [[ba50307](https://github.com/mathieutu/classed-components/commit/ba5030741f12c692ff298f90260f3a114b26e3cb)]
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2021-11-08)
 
