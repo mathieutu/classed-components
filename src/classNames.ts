@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { clsx } from 'clsx'
 
 type BasicClassValue = string | { [id: string]: any } | undefined | boolean
 type ClassesValue<P> = BasicClassValue | ClassesValueArray<P> | ((props: P) => Classes<P>)
@@ -32,7 +32,7 @@ export const processClasses = <P>(
 }
 
 const preparePlaceholders = <P>(templateStringPlaceholders: ClassesValueArray<P>, props: P) => (
-  templateStringPlaceholders.map((placeholder) => classNames(processClasses(placeholder, props)))
+  templateStringPlaceholders.map((placeholder) => clsx(processClasses(placeholder, props)))
 )
 
 const compileClassnames = (placeholders: string[], classes: TemplateStringsArray) => {

@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { clsx } from 'clsx'
 import { createElement, forwardRef } from 'react'
 import { Classes, ClassesValueArray, processClasses } from './classNames'
 import { filterPropsToForward, tags } from './tags'
@@ -8,7 +8,7 @@ const tagDisplayName = (tag: Tag) => (typeof tag === 'string' ? tag : tag.displa
 
 const createClassed: any = (tag: Tag) => (classes: Classes<any>, ...placeholders: ClassesValueArray<any>) => {
   const Hoc = forwardRef((props: { className?: string }, ref) => {
-    const className = classNames(
+    const className = clsx(
       processClasses(classes, props, placeholders),
       props.className,
     )
